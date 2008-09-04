@@ -1,0 +1,32 @@
+<?php echo $this->partial('heading.phtml', array('heading' => 'Update ACL')); ?>
+<?php if (!empty($this->message)): ?>
+<p><?php echo $this->message; ?></p>
+<?php else: ?>
+<?php if (!empty($this->modules)): ?>
+<p>The following module, resource, and/or privilege changes have been found in your application:</p>
+<?php foreach($this->modules as $moduleName => $module): ?>
+<ul>
+    <li><h3>Module: <?php echo ucfirst($moduleName); ?></h3></li>
+    <li>
+        <?php foreach($module['resources'] as $resourceName => $resource): ?>
+        <ul>
+            <li><h4>Resource: <?php echo ucfirst($resourceName); ?></h4></li>
+            <li>
+                <ul>
+                <?php foreach($resource['privileges'] as $privilegeName => $privilege): ?>
+                    <li><?php echo ($privilege) ? "+" : "-"; ?> <?php echo $privilegeName; ?></li>
+                <?php endforeach; ?>
+                </ul>
+            </li>
+        </ul>
+        <?php endforeach; ?>
+    </li>
+</ul>
+<?php endforeach; ?>
+<p>Would you like update your ACL with these changes?</p>
+<p><form method="post"><input type="submit" value="Update" /></form></p>
+<?php else: ?>
+<p>Your access control list is up to date.</p>
+<?php endif; ?>
+<?php endif; ?>
+<p><a href="<?php echo $this->Url(array('action'=>'index')); ?>">&lt;&lt;Back</a></p>

@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<options>
+    <accountTableClass>
+        <label>Account Table Class</label>
+        <type>string</type>
+        <description>Class name of the accounts table used in this application</description>
+        <required>1</required>
+        <validators>
+            <accountTableClass />
+        </validators>
+    </accountTableClass>
+    <accountTableAlias>
+        <label>Account Table Plural Alias</label>
+        <type>string</type>
+        <description>Plural alias for the account table for relating $group-&gt;"Accounts"</description>
+        <required>1</required>
+    </accountTableAlias>
+    <loginIdentityLabel>
+        <label>Login Identity Label</label>
+        <type>string</type>
+        <description>Identity label for display use (login form)</description>
+        <required>1</required>
+    </loginIdentityLabel>
+    <loginIdentityColumn>
+        <label>Login Identity Column</label>
+        <type>string</type>
+        <description>Column of the accounts table in which to check the identity (username)</description>
+        <required>1</required>
+        <validators>
+            <columnExists>
+                <options>accountTableClass</options>
+            </columnExists>
+        </validators>
+    </loginIdentityColumn>
+    <loginCredentialLabel>
+        <label>Login Credential Label</label>
+        <type>string</type>
+        <description>Credential label for display use (login form)</description>
+        <required>1</required>
+    </loginCredentialLabel>
+    <loginCredentialColumn>
+        <label>Login Credential Column</label>
+        <type>string</type>
+        <description>Column of the accounts table in which to check the credential (password)</description>
+        <required>1</required>
+        <validators>
+            <columnExists>
+                <options>accountTableClass</options>
+            </columnExists>
+        </validators>
+    </loginCredentialColumn>
+    <loginCredentialTreatment>
+        <label>Login Credential Treatment</label>
+        <type>string</type>
+        <description>Treatment of the credential input when authorizing ex: md5(?)</description>
+        <required>0</required>
+        <validators>
+            <loginCredentialTreatment />
+        </validators>
+    </loginCredentialTreatment>
+    <sessionExpiration>
+        <label>Session Expiration Time(in seconds)</label>
+        <type>number</type>
+        <description>Time in which sessions should expire (leave empty for browser default)</description>
+        <required>0</required>
+    </sessionExpiration>
+    <useSecurityErrorController>
+        <label>Use Security Error Controller</label>
+        <type>bool</type>
+        <description>Use the security error controller for failed access and errors dealing with security</description>
+        <required>1</required>
+    </useSecurityErrorController>
+    <enableAcl>
+        <label>Enable Access Control</label>
+        <type>bool</type>
+        <description>Enables / Disables the ACL subsystem</description>
+        <required>1</required>
+    </enableAcl>
+    <enableSystem>
+        <label>Enable Security System</label>
+        <type>bool</type>
+        <description>Enables / Disables the entire system.  This setting overrides all other enable / disable settings</description>
+        <required>1</required>
+    </enableSystem>
+    <modelPath>
+        <label>Model Path</label>
+        <type>string</type>
+        <description>Path where the application-wide models are stored</description>
+        <required>1</required>
+        <validators>
+            <modelPath />
+        </validators>
+    </modelPath>
+    <dataPath>
+        <label>Data Path</label>
+        <type>string</type>
+        <description>Path to the security module's data directory</description>
+        <required>1</required>
+        <validators>
+            <dataPath />
+        </validators>
+    </dataPath>
+</options>

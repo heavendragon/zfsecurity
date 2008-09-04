@@ -1,0 +1,19 @@
+<?php echo $this->partial('heading.phtml', array('heading' => 'Group List')); ?>
+<?php if ($this->groups->count()): ?>
+<table>
+	<tr class="head">
+		<th class="first">Group Name</th>
+		<th colspan="2">Options</th>
+	</tr>
+	<?php foreach($this->groups as $group): ?>
+	<tr>
+		<td><?php echo $group->name; ?></td>
+		<td><a href="<?php echo $this->Url(array('id'=>current($group->identifier())), 'edit_security_group_path')?>">Edit</td>
+		<td><a href="<?php echo $this->Url(array('id'=>current($group->identifier())), 'delete_security_group_path')?>">Delete</a></td>
+	</tr>
+	<?php endforeach; ?>
+</table>
+<?php else: ?>
+<p>There are currently no groups in the database</p>
+<?php endif; ?>
+<p><a href="<?php echo $this->Url(array(), 'new_security_group_path'); ?>">Create a new group</a></p>
